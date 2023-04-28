@@ -1,34 +1,17 @@
 #!/usr/bin/python3
-
-""" Lockboxes"""
+"""`canUnlockAll` module """
 
 
 def canUnlockAll(boxes):
-	"""
-	- boxes is a list of lists
-	- A key with the same number as a box opens that box
-	- You can assume all keys will be positive integers
-	- The first box boxes[0] is unlocked
-	- Return True if all boxes can be opened, else return False
-	"""
-	canUnlockAll = False
-	keys = {0: True}
-	n_boxes = len(boxes)
-	while(True):
+	"""A method that determines if all `boxes` can be opened
+	@boxes: A list of list of positive ints
+	rtype: `True` if all boxes can be opened, else `False`"""
 
-		n_keys = len(keys)
-
-		for i in range(len(boxes)):
-			if boxes[i] and keys.get(i, False):
-				for j in boxes[i]:
-					if j < n_boxes:
-						keys[j] = True
-					boxes[i] = None
-
-		if not(len(keys) > n_keys):
-			break
-
-	if n_keys == len(boxes):
-		canUnlockAll = True
-
-	return canUnlockAll
+	if not boxes or type(boxes) is not list:
+		return False
+	unlocked_boxes = [0]
+	for i in unlocked_boxes:
+		for key in boxes[i]:
+			if key not in unlocked_boxes and key < len(boxes):
+				unlocked_boxes.append(key)
+		return len(unlocked_boxes) == len(boxes)
