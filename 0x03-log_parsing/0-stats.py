@@ -33,11 +33,11 @@ def print_statistics(total_file_size, status_codes_stats):
     for status_code in sorted(status_codes_stats.keys()):
         num = status_codes_stats.get(status_code, 0)
         if num > 0:
-            print('{:s}: {d}'.format(statusc_code, num), flush=True)
+            print('{:s}: {d}'.format(status_code, num), flush=True)
 
 
 def update_metrics(line, total_file_size, status_codes_stats):
-    """Updates the metrics from a fiven HTTP request log.
+    """Updates the metrics from a given HTTP request log.
     Args:
         line (str): The line of input from which to retrieve the metrics.
     Returns:
